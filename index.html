@@ -33,8 +33,17 @@
       color: #1f3b57;
     }
 
-    ul {
-      line-height: 1.8;
+    .box {
+      background: #eef3f7;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 15px 0;
     }
 
     .btn {
@@ -44,18 +53,21 @@
       color: white;
       text-decoration: none;
       border-radius: 6px;
-      margin-top: 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      border: none;
     }
 
     .btn:hover {
       background: #2e5a7a;
     }
 
-    .box {
-      background: #eef3f7;
-      padding: 15px;
-      border-radius: 8px;
+    pre {
       margin-top: 15px;
+      background: #eee;
+      padding: 10px;
+      white-space: pre-wrap;
+      border-radius: 6px;
     }
 
     footer {
@@ -71,7 +83,7 @@
 
 <header>
   <h1>Dossier Consulenza Legale</h1>
-  <p>Strumento guidato per la raccolta documenti e ricostruzione del caso</p>
+  <p>Strumento guidato per la raccolta e pre-analisi del caso</p>
 </header>
 
 <div class="container">
@@ -79,34 +91,71 @@
   <h2>📌 A cosa serve questo dossier</h2>
   <p>
     Questo strumento ti aiuta a raccogliere in modo ordinato tutte le informazioni,
-    comunicazioni e prove utili per la tua posizione legale da consegnare all’avvocato.
+    comunicazioni e prove utili per la tua posizione legale.
   </p>
 
   <div class="box">
-    <strong>⚠️ Importante:</strong>
-    Compila tutto con precisione. Anche i dettagli apparentemente secondari possono essere decisivi.
+    <strong>⚠️ Importante:</strong> Compila con precisione. Anche i dettagli minori possono essere decisivi.
   </div>
 
   <h2>📂 Cosa devi preparare</h2>
   <ul>
     <li>Contratti e accordi firmati</li>
     <li>Email e PEC scambiate</li>
-    <li>Eventuali messaggi WhatsApp rilevanti</li>
-    <li>Cronologia degli eventi (timeline)</li>
-    <li>Eventuali testimonianze o documenti di supporto</li>
+    <li>Messaggi rilevanti</li>
+    <li>Cronologia eventi</li>
   </ul>
 
-  <h2>🧭 Procedura consigliata</h2>
-  <ol>
-    <li>Ricostruisci la timeline degli eventi</li>
-    <li>Raccogli tutti i documenti in una cartella</li>
-    <li>Ordina i file per data</li>
-    <li>Compila il modulo di sintesi (se disponibile)</li>
-  </ol>
+  <h2>📊 CHECK-UP OPERATIVO DEL CASO</h2>
 
-  <a class="btn" href="https://giokrilife-bit.github.io/legal/" target="_blank">
-    ➜ Vai al servizio principale
-  </a>
+  <div class="box">
+
+    <p>Hai documenti relativi al problema?</p>
+    <select id="doc">
+      <option value="">Seleziona</option>
+      <option>Sì</option>
+      <option>No</option>
+    </select>
+
+    <p>Hai ricevuto PEC o raccomandate?</p>
+    <select id="pec">
+      <option value="">Seleziona</option>
+      <option>Sì</option>
+      <option>No</option>
+    </select>
+
+    <p>Tipologia problema:</p>
+    <select id="tipo">
+      <option value="">Seleziona</option>
+      <option>Contratti</option>
+      <option>Lavoro</option>
+      <option>Assicurazioni</option>
+      <option>Energia</option>
+      <option>Casa</option>
+      <option>Altro</option>
+    </select>
+
+    <p>Hai già contattato un professionista?</p>
+    <select id="prof">
+      <option value="">Seleziona</option>
+      <option>Sì</option>
+      <option>No</option>
+    </select>
+
+    <p>Da quanto tempo esiste il problema?</p>
+    <select id="tempo">
+      <option value="">Seleziona</option>
+      <option>meno di 30 giorni</option>
+      <option>1-6 mesi</option>
+      <option>oltre 6 mesi</option>
+    </select>
+
+    <button class="btn" onclick="generaDossier()">📄 Genera dossier</button>
+    <button class="btn" onclick="copiaDossier()">📋 Copia per invio</button>
+
+    <pre id="output"></pre>
+
+  </div>
 
 </div>
 
@@ -114,6 +163,38 @@
   © Dossier Legale – GiOKri Life
 </footer>
 
+<script>
+function generaDossier() {
+  const doc = document.getElementById("doc").value;
+  const pec = document.getElementById("pec").value;
+  const tipo = document.getElementById("tipo").value;
+  const prof = document.getElementById("prof").value;
+  const tempo = document.getElementById("tempo").value;
+
+  const testo = `
+📊 DOSSIER CHECK-UP
+
+📁 Documenti: ${doc}
+📩 PEC/Raccomandate: ${pec}
+⚖️ Tipo problema: ${tipo}
+👨‍💼 Professionista contattato: ${prof}
+⏱ Durata: ${tempo}
+
+📌 Generato automaticamente dal sistema GiOKri Life.
+  `;
+
+  document.getElementById("output").innerText = testo;
+
+  localStorage.setItem("dossier", testo);
+}
+
+function copiaDossier() {
+  const testo = localStorage.getItem("dossier") || "";
+  navigator.clipboard.writeText(testo);
+  alert("Dossier copiato negli appunti");
+}
+</script>
+
 </body>
 </html>
-📌 Cosa ottieni con questo file
+🚀 COSA HAI ORA (IMPORTANTE)
