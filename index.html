@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dossier Consulenza Legale</title>
+  <title>Dossier Consulenza Legale - GiOKri Life</title>
 
   <style>
     body {
@@ -40,10 +40,11 @@
       margin-top: 15px;
     }
 
-    select {
+    input, select {
       width: 100%;
       padding: 8px;
       margin: 5px 0 15px 0;
+      box-sizing: border-box;
     }
 
     .btn {
@@ -83,30 +84,28 @@
 
 <header>
   <h1>Dossier Consulenza Legale</h1>
-  <p>Strumento guidato per la raccolta e pre-analisi del caso</p>
+  <p>Pre-analisi automatica del caso - GiOKri Life</p>
 </header>
 
 <div class="container">
 
-  <h2>📌 A cosa serve questo dossier</h2>
+  <h2>📌 A cosa serve</h2>
   <p>
-    Questo strumento ti aiuta a raccogliere in modo ordinato tutte le informazioni,
-    comunicazioni e prove utili per la tua posizione legale.
+    Questo strumento raccoglie e organizza le informazioni del tuo caso
+    per una prima valutazione strutturata.
   </p>
 
   <div class="box">
-    <strong>⚠️ Importante:</strong> Compila con precisione. Anche i dettagli minori possono essere decisivi.
+    <strong>⚠️ Importante:</strong> Compila con attenzione. Ogni dettaglio è utile.
   </div>
 
-  <h2>📂 Cosa devi preparare</h2>
-  <ul>
-    <li>Contratti e accordi firmati</li>
-    <li>Email e PEC scambiate</li>
-    <li>Messaggi rilevanti</li>
-    <li>Cronologia eventi</li>
-  </ul>
+  <h2>👤 Dati personali</h2>
 
-  <h2>📊 CHECK-UP OPERATIVO DEL CASO</h2>
+  <input type="text" id="nome" placeholder="Nome e Cognome">
+  <input type="email" id="email" placeholder="Email">
+  <input type="text" id="telefono" placeholder="Telefono">
+
+  <h2>📊 CHECK-UP OPERATIVO</h2>
 
   <div class="box">
 
@@ -151,7 +150,8 @@
     </select>
 
     <button class="btn" onclick="generaDossier()">📄 Genera dossier</button>
-    <button class="btn" onclick="copiaDossier()">📋 Copia per invio</button>
+    <button class="btn" onclick="copiaDossier()">📋 Copia</button>
+    <button class="btn" onclick="apriCRM()">📨 Invia richiesta</button>
 
     <pre id="output"></pre>
 
@@ -160,19 +160,28 @@
 </div>
 
 <footer>
-  © Dossier Legale – GiOKri Life
+  © GiOKri Life - Dossier Legale
 </footer>
 
 <script>
 function generaDossier() {
+
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const telefono = document.getElementById("telefono").value;
+
   const doc = document.getElementById("doc").value;
   const pec = document.getElementById("pec").value;
   const tipo = document.getElementById("tipo").value;
   const prof = document.getElementById("prof").value;
   const tempo = document.getElementById("tempo").value;
 
-  const testo = `
-📊 DOSSIER CHECK-UP
+  const testo =
+`📊 DOSSIER CHECK-UP
+
+👤 Nome: ${nome}
+📧 Email: ${email}
+📱 Telefono: ${telefono}
 
 📁 Documenti: ${doc}
 📩 PEC/Raccomandate: ${pec}
@@ -180,8 +189,7 @@ function generaDossier() {
 👨‍💼 Professionista contattato: ${prof}
 ⏱ Durata: ${tempo}
 
-📌 Generato automaticamente dal sistema GiOKri Life.
-  `;
+📌 Generato automaticamente da GiOKri Life`;
 
   document.getElementById("output").innerText = testo;
 
@@ -193,8 +201,11 @@ function copiaDossier() {
   navigator.clipboard.writeText(testo);
   alert("Dossier copiato negli appunti");
 }
+
+function apriCRM() {
+  window.open("https://forms.gle/RMffpT8r6cv5EgYK8", "_blank");
+}
 </script>
 
 </body>
 </html>
-🚀 COSA HAI ORA (IMPORTANTE)
