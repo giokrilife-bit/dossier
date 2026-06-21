@@ -40,6 +40,14 @@
       margin-top: 15px;
     }
 
+    .step {
+      background: #ffffff;
+      border-left: 4px solid #1f3b57;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
     input, select {
       width: 100%;
       padding: 8px;
@@ -84,19 +92,25 @@
 
 <header>
   <h1>Dossier Consulenza Legale</h1>
-  <p>Pre-analisi automatica del caso - GiOKri Life</p>
+  <p>Flusso guidato di pre-analisi del caso - GiOKri Life</p>
 </header>
 
 <div class="container">
 
-  <h2>📌 A cosa serve</h2>
-  <p>
-    Questo strumento raccoglie e organizza le informazioni del tuo caso
-    per una prima valutazione strutturata.
-  </p>
+  <h2>📌 ISTRUZIONI OPERATIVE</h2>
+
+  <div class="step">1️⃣ Compila tutti i dati richiesti nel modulo qui sotto</div>
+  <div class="step">2️⃣ Clicca su “Genera dossier”</div>
+  <div class="step">3️⃣ Controlla il riepilogo generato</div>
+  <div class="step">4️⃣ Clicca su “Copia”</div>
+  <div class="step">5️⃣ Clicca su “Invia richiesta”</div>
+  <div class="step">6️⃣ Si aprirà il modulo Google</div>
+  <div class="step">7️⃣ Incolla il dossier nel campo “Descrizione del caso”</div>
+  <div class="step">8️⃣ Invia il modulo</div>
 
   <div class="box">
-    <strong>⚠️ Importante:</strong> Compila con attenzione. Ogni dettaglio è utile.
+    <strong>⚠️ Importante:</strong>
+    Più dettagli inserisci, più accurata sarà la valutazione del caso.
   </div>
 
   <h2>👤 Dati personali</h2>
@@ -150,7 +164,7 @@
     </select>
 
     <button class="btn" onclick="generaDossier()">📄 Genera dossier</button>
-    <button class="btn" onclick="copiaDossier()">📋 Copia</button>
+    <button class="btn" onclick="copiaDossier()">📋 Copia dossier</button>
     <button class="btn" onclick="apriCRM()">📨 Invia richiesta</button>
 
     <pre id="output"></pre>
@@ -160,7 +174,7 @@
 </div>
 
 <footer>
-  © GiOKri Life - Dossier Legale
+  © GiOKri Life - Sistema Dossier
 </footer>
 
 <script>
@@ -187,7 +201,7 @@ function generaDossier() {
 📩 PEC/Raccomandate: ${pec}
 ⚖️ Tipo problema: ${tipo}
 👨‍💼 Professionista contattato: ${prof}
-⏱ Durata: ${tempo}
+⏱ Durata problema: ${tempo}
 
 📌 Generato automaticamente da GiOKri Life`;
 
