@@ -40,11 +40,6 @@
       margin-bottom: 20px;
     }
 
-    .hero h2 {
-      margin-top: 0;
-      color: #1f3b57;
-    }
-
     .step {
       background: #ffffff;
       border-left: 4px solid #1f3b57;
@@ -60,7 +55,7 @@
       margin-top: 15px;
     }
 
-    input, select {
+    select {
       width: 100%;
       padding: 8px;
       margin: 5px 0 15px 0;
@@ -109,41 +104,37 @@
 
 <div class="container">
 
-  <!-- 🔥 SEZIONE IMPATTANTE -->
+  <!-- 🔥 PARTE IMPATTANTE -->
   <div class="hero">
     <h2>📌 Hai un problema legale, contrattuale o assicurativo?</h2>
     <p>
-      Questo strumento ti aiuta a mettere ordine nella tua situazione in pochi minuti,
-      così da capire subito come impostare il tuo caso in modo corretto.
+      Questo strumento ti aiuta a ricostruire la tua situazione in modo chiaro e ordinato
+      per capire subito come impostare il tuo caso.
     </p>
     <p>
       Non è un semplice modulo: è una <strong>prima analisi guidata del tuo problema</strong>
-      che ti permette di arrivare preparato ad un confronto con un professionista.
+      che ti prepara all’invio della richiesta in modo strutturato.
     </p>
   </div>
 
+  <!-- 🔥 ISTRUZIONI -->
   <h2>📌 ISTRUZIONI OPERATIVE</h2>
 
-  <div class="step">1️⃣ Compila tutti i dati richiesti nel modulo</div>
+  <div class="step">1️⃣ Compila il check-up qui sotto</div>
   <div class="step">2️⃣ Clicca su “Genera dossier”</div>
-  <div class="step">3️⃣ Controlla il riepilogo</div>
+  <div class="step">3️⃣ Controlla il riepilogo automatico</div>
   <div class="step">4️⃣ Clicca su “Copia dossier”</div>
   <div class="step">5️⃣ Clicca su “Invia richiesta”</div>
-  <div class="step">6️⃣ Si apre il modulo ufficiale</div>
-  <div class="step">7️⃣ Incolla il dossier nel campo descrizione</div>
+  <div class="step">6️⃣ Si apre il modulo ufficiale GiOKri Life</div>
+  <div class="step">7️⃣ Incolla il dossier nel campo “Descrizione del caso”</div>
   <div class="step">8️⃣ Invia la richiesta</div>
 
   <div class="box">
     <strong>⚠️ Importante:</strong>
-    Più dettagli fornisci, più precisa sarà la valutazione iniziale.
+    Più informazioni inserisci, più precisa sarà la valutazione iniziale del tuo caso.
   </div>
 
-  <h2>👤 Dati personali</h2>
-
-  <input type="text" id="nome" placeholder="Nome e Cognome">
-  <input type="email" id="email" placeholder="Email">
-  <input type="text" id="telefono" placeholder="Telefono">
-
+  <!-- 🔥 CHECK-UP -->
   <h2>📊 CHECK-UP OPERATIVO</h2>
 
   <div class="box">
@@ -188,6 +179,7 @@
       <option>oltre 6 mesi</option>
     </select>
 
+    <!-- BOTTONI -->
     <button class="btn" onclick="generaDossier()">📄 Genera dossier</button>
     <button class="btn" onclick="copiaDossier()">📋 Copia dossier</button>
     <button class="btn" onclick="apriCRM()">📨 Invia richiesta</button>
@@ -205,10 +197,6 @@
 <script>
 function generaDossier() {
 
-  const nome = document.getElementById("nome").value;
-  const email = document.getElementById("email").value;
-  const telefono = document.getElementById("telefono").value;
-
   const doc = document.getElementById("doc").value;
   const pec = document.getElementById("pec").value;
   const tipo = document.getElementById("tipo").value;
@@ -217,10 +205,6 @@ function generaDossier() {
 
   const testo =
 `📊 DOSSIER CHECK-UP
-
-👤 Nome: ${nome}
-📧 Email: ${email}
-📱 Telefono: ${telefono}
 
 📁 Documenti: ${doc}
 📩 PEC/Raccomandate: ${pec}
