@@ -1,233 +1,179 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dossier Consulenza Legale - GiOKri Life</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier Informativo del Caso - GiOKri Life</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f6f8;
-      color: #333;
-    }
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f6f8;
+  color: #333;
+}
 
-    header {
-      background: #1f3b57;
-      color: white;
-      padding: 25px;
-      text-align: center;
-    }
+header {
+  background: #1f3b57;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
 
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
 
-    h2 {
-      color: #1f3b57;
-    }
+.hero {
+  background: #eef3f7;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
 
-    .hero {
-      background: #eef3f7;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
+.step {
+  border-left: 4px solid #1f3b57;
+  padding: 10px;
+  margin: 10px 0;
+}
 
-    .step {
-      background: #ffffff;
-      border-left: 4px solid #1f3b57;
-      padding: 10px 15px;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
 
-    .box {
-      background: #eef3f7;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
+button {
+  background: #1f3b57;
+  color: white;
+  padding: 12px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
 
-    select {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0 15px 0;
-      box-sizing: border-box;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      background: #1f3b57;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      margin-top: 10px;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn:hover {
-      background: #2e5a7a;
-    }
-
-    pre {
-      margin-top: 15px;
-      background: #eee;
-      padding: 10px;
-      white-space: pre-wrap;
-      border-radius: 6px;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 12px;
-      padding: 20px;
-      color: #777;
-    }
-  </style>
+pre {
+  background: #eee;
+  padding: 10px;
+  margin-top: 10px;
+  white-space: pre-wrap;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>Dossier Informativo del Caso</h1>
-  <p>Strumento guidato per raccogliere e organizzare informazioni e documenti prima di una valutazione professionale</p>
+<h1>Dossier Informativo del Caso</h1>
+<p>Strumento guidato per organizzare informazioni prima della valutazione</p>
 </header>
 
 <div class="container">
 
-  <!-- 🔥 PARTE IMPATTANTE -->
-  <div class="hero">
-    <h2>📌 Hai un problema legale, contrattuale o assicurativo?</h2>
-    <p>
-      Questo strumento ti aiuta a ricostruire la tua situazione in modo chiaro e ordinato
-      per capire subito come impostare il tuo caso.
-    </p>
-    <p>
-      Non è un semplice modulo: è una <strong>prima analisi guidata del tuo problema</strong>
-      che ti prepara all’invio della richiesta in modo strutturato.
-    </p>
-  </div>
+<div class="hero">
+<h2>📌 Hai una situazione da chiarire?</h2>
+<p>Questo strumento ti aiuta a mettere ordine nei fatti prima di una valutazione professionale.</p>
+<p>Al termine potrai inviare la richiesta o chiedere un appuntamento con GiOKri Life.</p>
+</div>
 
-  <!-- 🔥 ISTRUZIONI -->
-  <h2>📌 ISTRUZIONI OPERATIVE</h2>
+<h2>📊 Check-up</h2>
 
-  <div class="step">1️⃣ Compila il check-up qui sotto</div>
-  <div class="step">2️⃣ Clicca su “Genera dossier”</div>
-  <div class="step">3️⃣ Controlla il riepilogo automatico</div>
-  <div class="step">4️⃣ Clicca su “Copia dossier”</div>
-  <div class="step">5️⃣ Clicca su “Invia richiesta”</div>
-  <div class="step">6️⃣ Si apre il modulo ufficiale GiOKri Life</div>
-  <div class="step">7️⃣ Incolla il dossier nel campo “Descrizione del caso”</div>
-  <div class="step">8️⃣ Invia la richiesta</div>
+<p>Documenti disponibili</p>
+<select id="doc">
+<option>Sì</option>
+<option>No</option>
+</select>
 
-  <div class="box">
-    <strong>⚠️ Importante:</strong>
-    Più informazioni inserisci, più precisa sarà la valutazione iniziale del tuo caso.
-  </div>
+<p>PEC o raccomandate</p>
+<select id="pec">
+<option>Sì</option>
+<option>No</option>
+</select>
 
-  <!-- 🔥 CHECK-UP -->
-  <h2>📊 CHECK-UP OPERATIVO</h2>
+<p>Tipo situazione</p>
+<select id="tipo">
+<option>Contratti</option>
+<option>Assicurazioni</option>
+<option>Energia</option>
+<option>Patrimonio</option>
+<option>Lavoro</option>
+<option>Casa</option>
+<option>Altro</option>
+</select>
 
-  <div class="box">
+<p>Professionista contattato</p>
+<select id="prof">
+<option>Sì</option>
+<option>No</option>
+</select>
 
-    <p>Hai documenti relativi al problema?</p>
-    <select id="doc">
-      <option value="">Seleziona</option>
-      <option>Sì</option>
-      <option>No</option>
-    </select>
+<p>Durata problema</p>
+<select id="tempo">
+<option>Meno di 30 giorni</option>
+<option>1-6 mesi</option>
+<option>Oltre 6 mesi</option>
+</select>
 
-    <p>Hai ricevuto PEC o raccomandate?</p>
-    <select id="pec">
-      <option value="">Seleziona</option>
-      <option>Sì</option>
-      <option>No</option>
-    </select>
+<button onclick="genera()">Genera dossier</button>
+<button onclick="copia()">Copia</button>
+<button onclick="crm()">Invia richiesta</button>
 
-    <p>Tipologia problema:</p>
-    <select id="tipo">
-      <option value="">Seleziona</option>
-      <option>Contratti</option>
-      <option>Lavoro</option>
-      <option>Assicurazioni</option>
-      <option>Energia</option>
-      <option>Casa</option>
-      <option>Altro</option>
-    </select>
-
-    <p>Hai già contattato un professionista?</p>
-    <select id="prof">
-      <option value="">Seleziona</option>
-      <option>Sì</option>
-      <option>No</option>
-    </select>
-
-    <p>Da quanto tempo esiste il problema?</p>
-    <select id="tempo">
-      <option value="">Seleziona</option>
-      <option>meno di 30 giorni</option>
-      <option>1-6 mesi</option>
-      <option>oltre 6 mesi</option>
-    </select>
-
-    <!-- BOTTONI -->
-    <button class="btn" onclick="generaDossier()">📄 Genera dossier</button>
-    <button class="btn" onclick="copiaDossier()">📋 Copia dossier</button>
-    <button class="btn" onclick="apriCRM()">📨 Invia richiesta</button>
-
-    <pre id="output"></pre>
-
-  </div>
+<pre id="out"></pre>
 
 </div>
 
-<footer>
-  © GiOKri Life - Sistema Dossier
-</footer>
-
 <script>
-function generaDossier() {
 
-  const doc = document.getElementById("doc").value;
-  const pec = document.getElementById("pec").value;
-  const tipo = document.getElementById("tipo").value;
-  const prof = document.getElementById("prof").value;
-  const tempo = document.getElementById("tempo").value;
+function genera() {
 
-  const testo =
-`📊 DOSSIER CHECK-UP
+let doc = document.getElementById("doc").value;
+let pec = document.getElementById("pec").value;
+let tipo = document.getElementById("tipo").value;
+let prof = document.getElementById("prof").value;
+let tempo = document.getElementById("tempo").value;
 
-📁 Documenti: ${doc}
-📩 PEC/Raccomandate: ${pec}
-⚖️ Tipo problema: ${tipo}
-👨‍💼 Professionista contattato: ${prof}
-⏱ Durata problema: ${tempo}
+let score = 0;
 
-📌 Generato automaticamente da GiOKri Life`;
+score += doc === "Sì" ? 25 : 5;
+score += pec === "Sì" ? 20 : 5;
+score += (tipo === "Contratti" || tipo === "Assicurazioni" || tipo === "Energia" || tipo === "Patrimonio") ? 15 :
+         (tipo === "Lavoro" || tipo === "Casa") ? 10 : 8;
+score += prof === "No" ? 20 : 10;
+score += tempo === "Oltre 6 mesi" ? 20 : tempo === "1-6 mesi" ? 15 : 10;
 
-  document.getElementById("output").innerText = testo;
+let level = score <= 40 ? "🟢 Basso" :
+            score <= 70 ? "🟡 Medio" : "🔴 Alto";
 
-  localStorage.setItem("dossier", testo);
+let text =
+`DOSSIER GIOKRI LIFE
+
+Score: ${score}/100
+Livello: ${level}
+
+Documenti: ${doc}
+PEC: ${pec}
+Tipo: ${tipo}
+Professionista: ${prof}
+Durata: ${tempo}`;
+
+document.getElementById("out").innerText = text;
+
+localStorage.setItem("dossier", text);
 }
 
-function copiaDossier() {
-  const testo = localStorage.getItem("dossier") || "";
-  navigator.clipboard.writeText(testo);
-  alert("Dossier copiato negli appunti");
+function copia() {
+navigator.clipboard.writeText(localStorage.getItem("dossier") || "");
+alert("Copiato");
 }
 
-function apriCRM() {
-  window.open("https://forms.gle/RMffpT8r6cv5EgYK8", "_blank");
+function crm() {
+window.open("https://forms.gle/RMffpT8r6cv5EgYK8", "_blank");
 }
+
 </script>
 
 </body>
