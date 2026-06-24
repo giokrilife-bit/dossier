@@ -7,7 +7,7 @@
 
 <style>
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   margin: 0;
   background: #f4f6f8;
   color: #333;
@@ -23,9 +23,10 @@ header {
 .container {
   max-width: 900px;
   margin: 30px auto;
-  background: white;
   padding: 20px;
+  background: white;
   border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
 .hero {
@@ -38,7 +39,14 @@ header {
 .step {
   border-left: 4px solid #1f3b57;
   padding: 10px;
-  margin: 10px 0;
+  margin: 8px 0;
+}
+
+.box {
+  background: #eef3f7;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
 }
 
 select {
@@ -50,17 +58,23 @@ select {
 button {
   background: #1f3b57;
   color: white;
-  padding: 12px;
   border: none;
+  padding: 12px;
   margin-top: 10px;
   cursor: pointer;
+  border-radius: 6px;
+}
+
+button:hover {
+  background: #2e5a7a;
 }
 
 pre {
   background: #eee;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 15px;
+  margin-top: 15px;
   white-space: pre-wrap;
+  border-radius: 6px;
 }
 </style>
 </head>
@@ -69,18 +83,22 @@ pre {
 
 <header>
 <h1>Dossier Informativo del Caso</h1>
-<p>Strumento guidato per organizzare informazioni prima della valutazione</p>
+<p>Percorso guidato per raccogliere e organizzare informazioni</p>
 </header>
 
 <div class="container">
 
 <div class="hero">
 <h2>📌 Hai una situazione da chiarire?</h2>
-<p>Questo strumento ti aiuta a mettere ordine nei fatti prima di una valutazione professionale.</p>
-<p>Al termine potrai inviare la richiesta o chiedere un appuntamento con GiOKri Life.</p>
+<p>
+Questo strumento ti aiuta a mettere ordine nei fatti prima di una valutazione professionale.
+</p>
+<p>
+Puoi poi inviare la richiesta oppure chiedere un appuntamento con GiOKri Life.
+</p>
 </div>
 
-<h2>📊 Check-up</h2>
+<h2>📊 Check-up del Caso</h2>
 
 <p>Documenti disponibili</p>
 <select id="doc">
@@ -138,36 +156,64 @@ let tempo = document.getElementById("tempo").value;
 
 let score = 0;
 
-score += doc === "Sì" ? 25 : 5;
-score += pec === "Sì" ? 20 : 5;
+// 📁 documenti
+score += (doc === "Sì") ? 25 : 5;
+
+// 📩 PEC
+score += (pec === "Sì") ? 20 : 5;
+
+// ⚖️ tipo
 score += (tipo === "Contratti" || tipo === "Assicurazioni" || tipo === "Energia" || tipo === "Patrimonio") ? 15 :
          (tipo === "Lavoro" || tipo === "Casa") ? 10 : 8;
-score += prof === "No" ? 20 : 10;
-score += tempo === "Oltre 6 mesi" ? 20 : tempo === "1-6 mesi" ? 15 : 10;
 
-let level = score <= 40 ? "🟢 Basso" :
-            score <= 70 ? "🟡 Medio" : "🔴 Alto";
+// 👨‍💼 professionista
+score += (prof === "No") ? 20 : 10;
 
-let text =
-`DOSSIER GIOKRI LIFE
+// ⏱ tempo
+score += (tempo === "Oltre 6 mesi") ? 20 :
+         (tempo === "1-6 mesi") ? 15 : 10;
 
-Score: ${score}/100
-Livello: ${level}
+let livello = "";
+let nota = "";
 
-Documenti: ${doc}
-PEC: ${pec}
-Tipo: ${tipo}
-Professionista: ${prof}
-Durata: ${tempo}`;
+if (score <= 40) {
+  livello = "🟢 Bassa complessità";
+  nota = "Situazione semplice e gestibile in modo standard.";
+} else if (score <= 70) {
+  livello = "🟡 Media complessità";
+  nota = "Situazione da analizzare con attenzione.";
+} else {
+  livello = "🔴 Alta priorità";
+  nota = "Consigliato approfondimento diretto.";
+}
 
-document.getElementById("out").innerText = text;
+let output =
+`📊 DOSSIER INFORMATIVO DEL CASO
 
-localStorage.setItem("dossier", text);
+🚦 SCORE: ${score}/100
+${livello}
+${nota}
+
+------------------------
+
+📁 Documenti: ${doc}
+📩 PEC: ${pec}
+⚖️ Tipo: ${tipo}
+👨‍💼 Professionista: ${prof}
+⏱ Durata: ${tempo}
+
+------------------------
+
+Generato da GiOKri Life`;
+
+document.getElementById("out").innerText = output;
+
+localStorage.setItem("dossier", output);
 }
 
 function copia() {
 navigator.clipboard.writeText(localStorage.getItem("dossier") || "");
-alert("Copiato");
+alert("Dossier copiato");
 }
 
 function crm() {
